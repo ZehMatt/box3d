@@ -602,6 +602,7 @@ void b3SolveSphericalJoint( b3JointSim* base, b3StepContext* context, bool useBi
 	}
 
 	// Solve point-to-point constraint
+	if ( joint->limitAngularOnly == false )
 	{
 		b3Vec3 rA = b3RotateVector( stateA->deltaRotation, joint->frameA.p );
 		b3Vec3 rB = b3RotateVector( stateB->deltaRotation, joint->frameB.p );

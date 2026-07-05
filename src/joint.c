@@ -643,6 +643,7 @@ b3JointId b3CreateSphericalJoint( b3WorldId worldId, const b3SphericalJointDef* 
 	joint->sphericalJoint.maxMotorTorque = def->maxMotorTorque;
 	joint->sphericalJoint.motorVelocity = def->motorVelocity;
 	joint->sphericalJoint.enableSpring = def->enableSpring;
+	joint->sphericalJoint.limitAngularOnly = def->limitAngularOnly;
 	joint->sphericalJoint.enableConeLimit = def->enableConeLimit;
 	joint->sphericalJoint.enableTwistLimit = def->enableTwistLimit;
 	joint->sphericalJoint.enableMotor = def->enableMotor;

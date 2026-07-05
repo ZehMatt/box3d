@@ -238,6 +238,7 @@ typedef struct b3SphericalJoint
 	bool enableMotor;
 	bool enableConeLimit;
 	bool enableTwistLimit;
+	bool limitAngularOnly;
 } b3SphericalJoint;
 
 typedef struct b3WeldJoint

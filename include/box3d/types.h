@@ -882,6 +882,9 @@ typedef struct b3SphericalJointDef
 	/// Target spring rotation, joint frame B relative to joint frame A.
 	b3Quat targetRotation;
 
+	/// Limit rotation only, leaving translation free by skipping the point-to-point constraint.
+	bool limitAngularOnly;
+
 	/// A flag to enable the cone limit. The cone is centered on the frameA z-axis.
 	bool enableConeLimit;
 
