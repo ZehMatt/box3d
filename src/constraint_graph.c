@@ -144,7 +144,7 @@ void b3AddContactToGraph( b3World* world, b3Contact* contact )
 	}
 #endif
 
-	bool isScalar = ( contact->flags & b3_simMeshContact ) || colorIndex == B3_OVERFLOW_INDEX;
+	bool isScalar = ( contact->flags & b3_simMeshContact ) || contact->subCount > 1 || colorIndex == B3_OVERFLOW_INDEX;
 
 	b3GraphColor* color = graph->colors + colorIndex;
 	contact->colorIndex = colorIndex;

@@ -324,7 +324,7 @@ void b3TrySleepIsland( b3World* world, int islandId )
 			b3Array_Push( sleepSet->contactIndices, contactId );
 
 			int localIndex = contact->localIndex;
-			if ( ( contact->flags & b3_simMeshContact ) || colorIndex == B3_OVERFLOW_INDEX )
+			if ( ( contact->flags & b3_simMeshContact ) || contact->subCount > 1 || colorIndex == B3_OVERFLOW_INDEX )
 			{
 				int movedLocalIndex = b3Array_RemoveSwap( color->contacts, localIndex );
 				if ( movedLocalIndex != B3_NULL_INDEX )
