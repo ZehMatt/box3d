@@ -45,6 +45,7 @@ static void MinProfile( b3Profile* p1, const b3Profile* p2 )
 	p1->step = b3MinFloat( p1->step, p2->step );
 	p1->pairs = b3MinFloat( p1->pairs, p2->pairs );
 	p1->collide = b3MinFloat( p1->collide, p2->collide );
+	p1->solve = b3MinFloat( p1->solve, p2->solve );
 	p1->constraints = b3MinFloat( p1->constraints, p2->constraints );
 	p1->transforms = b3MinFloat( p1->transforms, p2->transforms );
 	p1->refit = b3MinFloat( p1->refit, p2->refit );
@@ -86,6 +87,7 @@ int main( int argc, char** argv )
 		{ "many_pyramids", NULL, CreateManyPyramids, NULL, NULL, 100 },
 		{ "rain", GetRainCapacity, CreateRain, DestroyRain, StepRain, 400 },
 		{ "washer", GetWasherCapacity, CreateWasher, NULL, NULL, 1000 },
+		{ "wheel_stack", NULL, CreateWheelStack, NULL, NULL, 500 },
 		{ "large_world", GetLargeWorldCapacity, CreateLargeWorld, NULL, StepLargeWorld, 500 },
 		//{ "smash", CreateSmash, NULL, 300 },
 		//{ "spinner", CreateSpinner, StepSpinner, 1400 },
@@ -312,8 +314,13 @@ int main( int argc, char** argv )
 			}
 		}
 
-		printf( "body %d / shape %d / contact %d / joint %d / stack %d\n\n", counters.bodyCount, counters.shapeCount,
+		printf( "body %d / shape %d / contact %d / joint %d / stack %d\n", counters.bodyCount, counters.shapeCount,
 				counters.contactCount, counters.jointCount, counters.stackUsed );
+		{
+			b3Profile last = profiles[stepCount - 1];
+			printf( "profile(min last step): step %.3f / collide %.3f / solve %.3f ms\n\n", last.step, last.collide,
+					last.solve );
+		}
 
 		char fileName[64] = { 0 };
 		snprintf( fileName, 64, "%s.csv", benchmarks[benchmarkIndex].name );
